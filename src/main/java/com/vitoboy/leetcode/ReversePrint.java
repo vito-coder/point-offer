@@ -1,6 +1,7 @@
 package com.vitoboy.leetcode;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * @Author: vito
@@ -30,6 +31,12 @@ public class ReversePrint {
 
     }
 
+    /**
+     * 使用递归方式实现
+     *
+     * @param head
+     * @return
+     */
     public static int[] reversePrint(ListNode head) {
         if (head == null) {
             return new int[0];
@@ -42,6 +49,55 @@ public class ReversePrint {
             rpint[pint.length] = head.val;
             return rpint;
         }
+    }
+
+
+    /**
+     * 使用循环方式实现
+     *
+     * @param head
+     * @return
+     */
+    public static int[] reversePrintStack(ListNode head) {
+        if (head == null) {
+            return new int[0];
+        }
+        if (head.next == null) {
+            return new int[]{head.val};
+        }
+        int count = 0;
+        Stack<Integer> turnList = new Stack<>();
+        while (head != null) {
+            turnList.push(head.val);
+            count++;
+            head = head.next;
+        }
+        int[] list = new int[count];
+        for (int i = 0; i < count; i++) {
+            list[i] = turnList.pop();
+        }
+
+        return list;
+    }
+
+    public static int[] reversePrintDouble100(ListNode head) {
+        //先获取链表长度，创建对应长度数组
+        ListNode currNode = head;
+        int len = 0;
+        while(currNode != null){
+            len ++;
+            currNode = currNode.next;
+        }
+        int[] result = new int[len];
+
+        //再次遍历链表，将值倒序填充至结果数组
+        currNode = head;
+        while(currNode != null){
+            result[len - 1] = currNode.val;
+            len --;
+            currNode = currNode.next;
+        }
+        return result;
     }
 }
 
