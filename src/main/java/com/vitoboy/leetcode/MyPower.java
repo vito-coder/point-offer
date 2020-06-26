@@ -33,25 +33,24 @@ package com.vitoboy.leetcode;
 public class MyPower {
     public static void main(String[] args) {
         MyPower power = new MyPower();
-        System.out.println(Integer.toBinaryString(10));
-        System.out.println(power.myPow(2.0, 10));
+//        System.out.println(Integer.toBinaryString(10));
+        System.out.println(power.myPow(2.0, -1));
+        System.out.println(power.myPow(0.00001,2147483647));
     }
 
     public double myPow(double x, int n) {
-        boolean negative = false;
-        if (n < 0) {
-            negative = true;
-            n = (-1) * n;
-        } else if (n == 0) {
-            return 1.0;
+        if(x == 0) return 0;
+        long b = n;
+        double res = 1.0;
+        if(b < 0) {
+            x = 1 / x;
+            b = -b;
         }
-        if (x == 1.0) {
-            return 1.0;
+        while(b > 0) {
+            if((b & 1) == 1) res *= x;
+            x *= x;
+            b >>= 1;
         }
-        double sum = myPow(x, n-1) * x;
-        if (negative) {
-            return 1 / sum;
-        }
-        return sum;
+        return res;
     }
 }
