@@ -89,7 +89,7 @@ public class XI_RobotMovingCount {
     }
 
     /**
-     * 深度优先
+     * 深度优先搜索
      *
      * @param m
      * @param n
@@ -100,15 +100,31 @@ public class XI_RobotMovingCount {
         if (m == 0 || n == 0) return 0;
         if (k < 0) return 0;
         int[][] check = new int[m][n];
-        int count = moveCount(check, 0, 0, k);
+        int count = dfs(check, 0, 0, k);
         return count;
     }
 
-    public int moveCount(int[][] check, int i, int j, int k) {
+    /**
+     * 深度优先搜索
+     *
+     *
+     * @param check     状态记录表
+     * @param i         行号
+     * @param j         列号
+     * @param k         限制行,列位数和的上限
+     * @return
+     *  可以去到的格子
+     */
+    public int dfs(int[][] check, int i, int j, int k) {
+        // 行限制, 列限制
         if (i >= check.length || j >= check[0].length ) return 0;
+        // 行位数, 与列位数, 之和的限制
         if ((i%10 + i/10 + j%10 + j/10) > k) return 0;
+        // 已访问过, 不计算在内
         if (check[i][j] == 1) return 0;
+        // 可以访问, 标记状态值
         check[i][j] = 1;
-        return 1 + moveCount(check, i, j+1, k) + moveCount(check, i+1, j, k);
+        // 返回可访问的格子数
+        return 1 + dfs(check, i, j+1, k) + dfs(check, i+1, j, k);
     }
 }
