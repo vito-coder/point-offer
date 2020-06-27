@@ -36,7 +36,7 @@ package com.vitoboy.leetcode;
  * 0 <= m <= 1000
  *
  */
-public class FindNumberIn2DArray {
+public class II_FindNumberIn2DArray {
 
     public static void main(String[] args) {
 

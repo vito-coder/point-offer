@@ -32,7 +32,7 @@ import java.util.Stack;
  *
  * 0 <= 节点个数 <= 5000
  */
-public class BuildTree {
+public class V_BuildTree {
     public static void main(String[] args) {
 
     }

@@ -20,7 +20,7 @@ package com.vitoboy.leetcode;
  * 输入：[2,2,2,0,1]
  * 输出：0
  */
-public class MinArray {
+public class IX_MinArray {
 
 
     public static void main(String[] args) {

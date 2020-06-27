@@ -25,7 +25,7 @@ import java.util.Stack;
  *
  *
  */
-public class ReversePrint {
+public class IV_ReversePrint {
 
     public static void main(String[] args) {
 

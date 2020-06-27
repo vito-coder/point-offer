@@ -27,7 +27,7 @@ package com.vitoboy.leetcode;
  * 链接：https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class FindRepeatNumber {
+public class I_FindRepeatNumber {
 
     public static void main(String[] args) {
         int[] nums = new int[]{2, 3, 1, 0, 2, 5, 3};

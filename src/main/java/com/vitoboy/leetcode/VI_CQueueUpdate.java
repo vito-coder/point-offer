@@ -32,14 +32,14 @@ import java.util.Stack;
  * 1 <= values <= 10000
  * 最多会对 appendTail、deleteHead 进行 10000 次调用
  */
-public class CQueueUpdate {
+public class VI_CQueueUpdate {
 
     // 入栈用的
     private Stack<Integer> input;
     // 出栈用的
     private Stack<Integer> output;
 
-    public CQueueUpdate() {
+    public VI_CQueueUpdate() {
         this.input = new Stack<>();
         this.output = new Stack<>();
     }

@@ -36,7 +36,7 @@ package com.vitoboy.leetcode;
  * 1 <= board.length <= 200
  * 1 <= board[i].length <= 200
  */
-public class MatrixExistPathLikeOfficial {
+public class X_MatrixExistPathLikeOfficial {
 
     public static void main(String[] args) {
         String word = "ABCCED";

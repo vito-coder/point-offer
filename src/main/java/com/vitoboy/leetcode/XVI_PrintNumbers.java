@@ -21,10 +21,10 @@ import java.util.Arrays;
  * 用返回一个整数列表来代替打印
  * n 为正整数
  */
-public class PrintNumbers {
+public class XVI_PrintNumbers {
     public static void main(String[] args) {
 
-        PrintNumbers printNumbers = new PrintNumbers();
+        XVI_PrintNumbers printNumbers = new XVI_PrintNumbers();
         int[] print = printNumbers.printNumbers(0);
         System.out.println(Arrays.toString(print));
 

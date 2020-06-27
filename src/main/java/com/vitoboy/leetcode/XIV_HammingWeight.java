@@ -26,7 +26,7 @@ package com.vitoboy.leetcode;
  * 解释：输入的二进制串 11111111111111111111111111111101 中，共有 31 位为 '1'。
  *
  */
-public class HammingWeight {
+public class XIV_HammingWeight {
 
     public static void main(String[] args) {
         int num = 10;

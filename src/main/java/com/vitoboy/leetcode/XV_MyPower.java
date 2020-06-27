@@ -30,9 +30,9 @@ package com.vitoboy.leetcode;
  * -100.0 < x < 100.0
  * n 是 32 位有符号整数，其数值范围是 [−231, 231 − 1] 。
  */
-public class MyPower {
+public class XV_MyPower {
     public static void main(String[] args) {
-        MyPower power = new MyPower();
+        XV_MyPower power = new XV_MyPower();
 //        System.out.println(Integer.toBinaryString(10));
         System.out.println(power.myPow(2.0, -1));
         System.out.println(power.myPow(0.00001,2147483647));

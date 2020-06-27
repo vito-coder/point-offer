@@ -20,7 +20,7 @@ package com.vitoboy.leetcode;
  *
  * 0 <= s 的长度 <= 10000
  */
-public class ReplaceSpace {
+public class III_ReplaceSpace {
 
     public static void main(String[] args) {
         String str = "We are happy.";

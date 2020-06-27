@@ -31,45 +31,43 @@ import java.util.Stack;
  *
  * 1 <= values <= 10000
  * 最多会对 appendTail、deleteHead 进行 10000 次调用
- *
- *
- *
-作者：LeetCode-Solution
-链接：https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/solution/mian-shi-ti-09-yong-liang-ge-zhan-shi-xian-dui-l-3/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  */
-public class CQueueOffice {
+public class VI_CQueue {
 
-    Stack<Integer> stack1;
-    Stack<Integer> stack2;
-    int size;
+    // 入栈用的
+    private Stack<Integer> input;
+    // 出栈用的
+    private Stack<Integer> output;
 
-    public CQueueOffice() {
-        stack1 = new Stack<Integer>();
-        stack2 = new Stack<Integer>();
-        size = 0;
+    public VI_CQueue() {
+        this.input = new Stack<>();
+        this.output = new Stack<>();
     }
 
     public void appendTail(int value) {
-        while (!stack1.isEmpty()) {
-            stack2.push(stack1.pop());
+        // 如果出栈有值, 需要将值放回到入栈, 再将新值入栈
+        if (output.size() > 0) {
+            while (output.size() > 0) {
+                input.push(output.pop());
+            }
         }
-        stack1.push(value);
-        while (!stack2.isEmpty()) {
-            stack1.push(stack2.pop());
-        }
-        size++;
+        input.push(value);
     }
 
     public int deleteHead() {
-        if (size == 0) {
-            return -1;
+        if (input.size() > 1) {
+            while (input.size() > 1) {
+                output.push(input.pop());
+            }
+            return input.pop();
+        } else if (input.size() == 1) {
+            return input.pop();
         }
-        size--;
-        return stack1.pop();
+        if (output.size() > 0) {
+            return output.pop();
+        }
+        return -1;
     }
-
 
     public static void main(String[] args) {
 

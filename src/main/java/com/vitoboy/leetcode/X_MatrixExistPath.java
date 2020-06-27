@@ -37,7 +37,7 @@ import java.util.Stack;
  * 1 <= board.length <= 200
  * 1 <= board[i].length <= 200
  */
-public class MatrixExistPath {
+public class X_MatrixExistPath {
 
     public static void main(String[] args) {
         String word = "ABCCED";

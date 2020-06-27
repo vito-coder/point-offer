@@ -43,7 +43,7 @@ package com.vitoboy.leetcode;
  * 15
  * 9
  */
-public class RobotMovingCount {
+public class XI_RobotMovingCount {
 
     public static void main(String[] args) {
 

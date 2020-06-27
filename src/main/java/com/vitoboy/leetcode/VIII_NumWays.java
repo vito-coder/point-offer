@@ -21,9 +21,9 @@ package com.vitoboy.leetcode;
  * 提示：
  *
  * 0 <= n <= 100
- * @see     Fibonacci
+ * @see     VII_Fibonacci
  */
-public class NumWays {
+public class VIII_NumWays {
     public static void main(String[] args) {
 
         System.out.println(numWays(7));
