@@ -1,5 +1,8 @@
 package com.vitoboy.leetcode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @Author: vito
  * @Date: 2020/6/19 18:11
@@ -59,6 +62,14 @@ public class XI_RobotMovingCount {
         System.out.println(count.movingCount(16, 8, 4));
         System.out.println(count.movingCount(38, 15, 9));
         System.out.println(count.movingCount(100, 100, 9));
+
+
+
+        System.out.println(count.bfs(2, 3, 1));
+        System.out.println(count.bfs(3, 1, 0));
+        System.out.println(count.bfs(16, 8, 4));
+        System.out.println(count.bfs(38, 15, 9));
+        System.out.println(count.bfs(100, 100, 9));
 
     }
 
@@ -126,5 +137,33 @@ public class XI_RobotMovingCount {
         check[i][j] = 1;
         // 返回可访问的格子数
         return 1 + dfs(check, i, j+1, k) + dfs(check, i+1, j, k);
+    }
+
+
+    /**
+     * 广度优先搜索
+     *
+     * @param m
+     * @param n
+     * @param k
+     * @return
+     */
+    public int bfs(int m, int n, int k) {
+        boolean[][] check = new boolean[m][n];
+        Queue<int[]> queue = new LinkedList<>();
+        int[] first = new int[]{0, 0};
+        queue.add(first);
+        int result = 0;
+        while(queue.size() > 0) {
+            int[] node = queue.poll();
+            int i=node[0], j=node[1];
+            if (i >= m || j >= n || check[i][j] || (i%10 + i/10 + j%10 +j/10) > k) continue;
+            check[i][j] = true;
+            result++;
+            queue.add(new int[]{i+1, j});
+            queue.add(new int[]{i, j+1});
+        }
+        return result;
+
     }
 }
