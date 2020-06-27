@@ -29,7 +29,7 @@ package com.vitoboy.leetcode;
  *
  * 2 <= n <= 1000
  */
-public class XIII_CuttingRop_II {
+public class XIII_CuttingRope_II {
     public static void main(String[] args) {
 
     }

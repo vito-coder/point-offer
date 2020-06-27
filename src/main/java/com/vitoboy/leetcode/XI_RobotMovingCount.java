@@ -52,6 +52,14 @@ public class XI_RobotMovingCount {
         System.out.println(robotMovingCount(16, 8, 4));
         System.out.println(robotMovingCount(38, 15, 9));
 
+        XI_RobotMovingCount count = new XI_RobotMovingCount();
+
+        System.out.println(count.movingCount(2, 3, 1));
+        System.out.println(count.movingCount(3, 1, 0));
+        System.out.println(count.movingCount(16, 8, 4));
+        System.out.println(count.movingCount(38, 15, 9));
+        System.out.println(count.movingCount(100, 100, 9));
+
     }
 
 
@@ -80,17 +88,27 @@ public class XI_RobotMovingCount {
         }
     }
 
+    /**
+     * 深度优先
+     *
+     * @param m
+     * @param n
+     * @param k
+     * @return
+     */
     public int movingCount(int m, int n, int k) {
         if (m == 0 || n == 0) return 0;
         if (k < 0) return 0;
-        else if (k >= 9) {
-            // 一行一行走
+        int[][] check = new int[m][n];
+        int count = moveCount(check, 0, 0, k);
+        return count;
+    }
 
-
-        } else {
-            // k < 9, k <= 8 , 不管 m, n是什么, 计算的结果一定小某个值
-        }
-
-        return 0;
+    public int moveCount(int[][] check, int i, int j, int k) {
+        if (i >= check.length || j >= check[0].length ) return 0;
+        if ((i%10 + i/10 + j%10 + j/10) > k) return 0;
+        if (check[i][j] == 1) return 0;
+        check[i][j] = 1;
+        return 1 + moveCount(check, i, j+1, k) + moveCount(check, i+1, j, k);
     }
 }
