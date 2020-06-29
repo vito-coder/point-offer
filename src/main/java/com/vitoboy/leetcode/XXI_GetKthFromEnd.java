@@ -69,4 +69,32 @@ public class XXI_GetKthFromEnd {
         // 返回找到的倒数第 k 个节点 beNode
         return beNode;
     }
+
+
+    /**
+     * 官方推荐算法
+     *
+     * 作者：jyd
+     * 链接：https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/solution/mian-shi-ti-22-lian-biao-zhong-dao-shu-di-kge-j-11/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
+     * @param head
+     * @param k
+     * @return
+     */
+    public ListNode getKthFromEndOfficial(ListNode head, int k) {
+        ListNode former = head, latter = head;
+        for(int i = 0; i < k; i++) {
+            if(former == null) return null;
+            former = former.next;
+        }
+        while(former != null) {
+            former = former.next;
+            latter = latter.next;
+        }
+        return latter;
+    }
+
+
 }
