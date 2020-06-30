@@ -176,7 +176,9 @@ public class XXXII_LevelOrder {
 
     /**
      * 比 99% java用户快
-     * 这里主要是对双端队列不熟悉, 即对LinkedList 不熟悉
+     * 1. 这里主要是对双端队列不熟悉, 即对LinkedList 不熟悉
+     * 2. 二叉树的一些特性, 如, 累加的情况下, 单数层的节点数为单数, 偶数层为双数( 可以用到对2求余 )
+     *
      * @param root
      * @return
      */
