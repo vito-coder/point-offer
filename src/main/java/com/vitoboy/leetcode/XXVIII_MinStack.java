@@ -84,20 +84,20 @@ public class XXVIII_MinStack {
 }
 
 class MinStack{
-    Node listNode;
-    Node minList;
-    Node head;
+    MyNode listNode;
+    MyNode minList;
+    MyNode head;
     /** initialize your data structure here. */
     public MinStack() {
     }
 
     public void push(int x) {
         if (listNode == null) {
-            listNode = new Node(x);
+            listNode = new MyNode(x);
             minList = listNode;
             head = listNode;
         } else {
-            Node node = new Node(x);
+            MyNode node = new MyNode(x);
             listNode.next = node;
             node.pre = listNode;
             listNode = node;
@@ -127,7 +127,7 @@ class MinStack{
             listNode = null;
             return;
         }
-        Node pre ;
+        MyNode pre ;
         if ((pre = listNode.pre) == null) {
 
             return;
@@ -152,9 +152,9 @@ class MinStack{
 
     public int top() {
         if (listNode != null && listNode.pre != null && listNode.pre.pre != null) {
-            Node node = minList.max;
+            MyNode node = minList.max;
             while (node != null) {
-                Node preMax = node.max;
+                MyNode preMax = node.max;
                 if (preMax == null) break;
                 if (preMax.val < node.val) {
                     if (preMax.max != null) {
@@ -181,13 +181,13 @@ class MinStack{
     }
 }
 
-class Node {
+class MyNode {
     int val;
-    Node pre;
-    Node next;
-    Node min;
-    Node max;
-    public Node(int val) {
+    MyNode pre;
+    MyNode next;
+    MyNode min;
+    MyNode max;
+    public MyNode(int val) {
         this.val = val;
     }
 }
