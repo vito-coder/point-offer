@@ -167,4 +167,41 @@ public class XL_GetLeastNumbers {
     }
 
 
+    /**
+     *
+     * 数据范围有限时直接计数排序就行了：O(N)O(N)
+     *
+     * 作者：sweetiee
+     *      链接：https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/solution/3chong-jie-fa-miao-sha-topkkuai-pai-dui-er-cha-sou/
+     *      来源：力扣（LeetCode）
+     *      著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param arr
+     * @param k
+     * @return
+     */
+    public int[] getLeastNumbersLimitArea(int[] arr, int k) {
+        if (k == 0 || arr.length == 0) {
+            return new int[0];
+        }
+        // 统计每个数字出现的次数
+        int[] counter = new int[10001];
+        for (int num: arr) {
+            counter[num]++;
+        }
+        // 根据counter数组从头找出k个数作为返回结果
+        int[] res = new int[k];
+        int idx = 0;
+        for (int num = 0; num < counter.length; num++) {
+            while (counter[num]-- > 0 && idx < k) {
+                res[idx++] = num;
+            }
+            if (idx == k) {
+                break;
+            }
+        }
+        return res;
+    }
+
+
+
 }
