@@ -40,11 +40,38 @@ import java.util.LinkedList;
  */
 public class LIV_KthLargest {
     public static void main(String[] args) {
-        // todo
+        TreeNode root = new TreeNode(5);
+        root.right = new TreeNode(6);
+        TreeNode node3 = new TreeNode(3);
+        node3.right = new TreeNode(4);
+        TreeNode node2 = new TreeNode(2);
+        node2.left = new TreeNode(1);
+        node3.left = node2;
+        root.left = node3;
+
+        LIV_KthLargest largest = new LIV_KthLargest();
+        System.out.println(largest.kthLargest(root, 3));
     }
 
     public int kthLargest(TreeNode root, int k) {
-        // todo
-        return 0;
+        if (root == null|| k == 0) return 0;
+        LinkedList<Integer> list = new LinkedList<>();
+        addNode(root, k, list);
+        return list.peekLast();
+    }
+
+    public void addNode(TreeNode root, int k, LinkedList<Integer> list) {
+        if (root == null) return;
+        if (list.size() >= k) return;
+        if (root.right == null && root.left == null) {
+            list.add(root.val);
+            return;
+        }
+        if (root.right != null) addNode(root.right, k, list);
+        int len = list.size();
+        if (len >= k) return;
+        list.add(root.val);
+        if (len+1 >= k) return;
+        if (root.left != null) addNode(root.left, k, list);
     }
 }
