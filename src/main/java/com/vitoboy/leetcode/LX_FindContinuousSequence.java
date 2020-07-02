@@ -36,7 +36,7 @@ public class LX_FindContinuousSequence {
     public static void main(String[] args) {
         LX_FindContinuousSequence continuousSequence = new LX_FindContinuousSequence();
 //        System.out.println(Arrays.toString(continuousSequence.findContinuousSequence(15)));
-        int[][] list = continuousSequence.findContinuousSequenceUpdate(100000);
+        int[][] list = continuousSequence.findContinuousSequenceOfficialFaster(100000);
         for (int i = 0; i < list.length; i++) {
             System.out.println(Arrays.toString(list[i]));
         }
@@ -154,6 +154,24 @@ public class LX_FindContinuousSequence {
 
     /**
      * 官方推荐较快的
+     *
+     * 解析三、取巧方法
+     * 这道题其实和 829. 连续整数求和 差不多。只不过最后求的答案格式不太一样。在829的评论区有许多有意思的解法。
+     *
+     * 现在我们来重新审视一下这道题在求什么。
+     *
+     * 如果两个连续的数之和为 targettarget，这两个数相差为 11，也就是说将较大的那个数减一，就是两个相等的数之和为 target - 1target−1。这个数就是 (target - 1)/2(target−1)/2，只要保证能整除，就是我们需要的解。
+     *
+     * 进一步讲，如果三个连续的数和为 targettarget，则将中间那个数减一，最后那个数减二，就是三个相等的数之和为 target - 1 - 2target−1−2。这个数就是 (target - 1 - 2)/3(target−1−2)/3，只要保证能整除，就是我们需要的解。
+     *
+     *
+     *
+     * 所以，不断的将 targettarget 的尖端削去，判断能否整除 项数 即可。
+     *
+     * 作者：dongzengjie
+     * 链接：https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/solution/san-chong-fang-fa-cong-jian-dao-fan-zai-dao-jian-b/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      *
      * @param target
      * @return
