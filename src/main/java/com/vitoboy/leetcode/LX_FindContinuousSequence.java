@@ -1,8 +1,8 @@
 package com.vitoboy.leetcode;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,7 +36,7 @@ public class LX_FindContinuousSequence {
     public static void main(String[] args) {
         LX_FindContinuousSequence continuousSequence = new LX_FindContinuousSequence();
 //        System.out.println(Arrays.toString(continuousSequence.findContinuousSequence(15)));
-        int[][] list = continuousSequence.findContinuousSequence(100000);
+        int[][] list = continuousSequence.findContinuousSequenceUpdate(100000);
         for (int i = 0; i < list.length; i++) {
             System.out.println(Arrays.toString(list[i]));
         }
@@ -76,4 +76,109 @@ public class LX_FindContinuousSequence {
         }
         return result;
     }
+
+
+    /**
+     * 使用窗口滑动算法来处理
+     *
+     * @param target
+     * @return
+     */
+    public int[][] findContinuousSequenceUpdate(int target) {
+        if (target < 3 || target == 4) return new int[0][];
+        List<Integer> list = new ArrayList<>();
+        int i=1,j=1,sum=0;
+        List<int[]> total = new ArrayList<>();
+        while (i <= target/2) {
+            if (sum > target) {
+                sum -= i;
+                i++;
+            } else if (sum < target) {
+                sum += j;
+                j++;
+            } else {
+                int[] arr = new int[j-i];
+                for (int k = i; k < j; k++) {
+                    arr[k-i] = k;
+                }
+                total.add(arr);
+                sum -= i;
+                i++;
+            }
+        }
+        return total.toArray(new int[total.size()][]);
+    }
+
+
+    /**
+     *
+    作者：nettee
+    链接：https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/solution/shi-yao-shi-hua-dong-chuang-kou-yi-ji-ru-he-yong-h/
+    来源：力扣（LeetCode）
+    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
+     * @param target
+     * @return
+     */
+    public int[][] findContinuousSequenceOfficial(int target) {
+        int i = 1; // 滑动窗口的左边界
+        int j = 1; // 滑动窗口的右边界
+        int sum = 0; // 滑动窗口中数字的和
+        List<int[]> res = new ArrayList<>();
+
+        while (i <= target / 2) {
+            if (sum < target) {
+                // 右边界向右移动
+                sum += j;
+                j++;
+            } else if (sum > target) {
+                // 左边界向右移动
+                sum -= i;
+                i++;
+            } else {
+                // 记录结果
+                int[] arr = new int[j-i];
+                for (int k = i; k < j; k++) {
+                    arr[k-i] = k;
+                }
+                res.add(arr);
+                // 左边界向右移动
+                sum -= i;
+                i++;
+            }
+        }
+
+        return res.toArray(new int[res.size()][]);
+    }
+
+
+    /**
+     * 官方推荐较快的
+     *
+     * @param target
+     * @return
+     */
+    public int[][] findContinuousSequenceOfficialFaster(int target) {
+
+        List<int[]> result = new ArrayList<>();
+        int i = 1;
+
+        while(target>0)
+        {
+            target -= i++;
+            if(target>0 && target%i == 0)
+            {
+                int[] array = new int[i];
+                for(int k = target/i, j = 0; k < target/i+i; k++,j++)
+                {
+                    array[j] = k;
+                }
+                result.add(array);
+            }
+        }
+        Collections.reverse(result);
+        return result.toArray(new int[0][]);
+    }
+
+
 }
