@@ -44,6 +44,7 @@ public class LX_FindContinuousSequence {
 
     /**
      *  太慢了....虽然可以实现
+     *  使用双重循环, 太慢了....
      *
      * @param target
      * @return
