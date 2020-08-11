@@ -72,11 +72,13 @@ public class LXXII_StrToInt {
         System.out.println(str.strToInt("-+1")); //"   +0 123"
         System.out.println(str.strToInt("   +0 123"));
         System.out.println(str.strToInt("2147483648"));
+        System.out.println(str.strToInt("-2147483649")); //-2147483648
+        System.out.println(str.strToInt("-2147483647")); // -2147483647
 
 
     }
 
-    public int strToInt(String str) {
+    public int strToIntBack(String str) {
         if (str == null || str.length() == 0) return 0;
         int res = 0;
         boolean negative = false;
@@ -123,4 +125,57 @@ public class LXXII_StrToInt {
         }
         return res;
     }
+
+
+
+    public int strToInt(String str) {
+        if (str == null || str.length() == 0) return 0;
+        char[] numbers = str.trim().toCharArray();
+        int max = Integer.MAX_VALUE/10;
+        int res = 0;
+        int sign = 1;
+        for (int i = 0; i < numbers.length; i++) {
+            char cnum = numbers[i];
+            if (cnum == '-' ) {
+                if (i == 0) sign = -1;
+                else break;
+            } else if(cnum == '+' ) {
+                if (i == 0) continue;
+                else break;
+            } else if (cnum >= '0' && cnum <= '9') {
+                if (res > max) {
+                    if (sign > 0) return Integer.MAX_VALUE;
+                    else return Integer.MIN_VALUE;
+                } else if (res == max) {
+                    int single = cnum - '0';
+                    int digit = Integer.MAX_VALUE % 10;
+                    if (single == digit) {
+                        if (sign > 0 ) return Integer.MAX_VALUE;
+                        if (i == numbers.length -1) return sign * (res * 10 + single);
+                        if (numbers[i+1] >= '0' && numbers[i+1] <= '9') return Integer.MIN_VALUE;
+                    } else if (single > digit) {
+                        if (sign > 0) return Integer.MAX_VALUE;
+                        return Integer.MIN_VALUE;
+                    } else {
+                        if (i == numbers.length -1 ) {
+                            res = res*10 + single;
+                            return res*sign;
+                        } else {
+                            if (numbers[i+1] >= '0' && numbers[i+1] <= '9') {
+                                res = sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+                                return res;
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+                }
+                res = res * 10 + (cnum - '0');
+            } else {
+                break;
+            }
+        }
+        return res*sign;
+    }
+
 }
