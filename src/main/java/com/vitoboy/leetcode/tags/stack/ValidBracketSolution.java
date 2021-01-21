@@ -1,5 +1,7 @@
 package com.vitoboy.leetcode.tags.stack;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -53,7 +55,33 @@ public class ValidBracketSolution {
 
     public static void main(String[] args) {
         ValidBracketSolution solution = new ValidBracketSolution();
-        testOne(solution);
+        testTwo(solution, 1);
+
+    }
+
+    static class ValidBracketTest{
+        private ValidBracketSolution solution = null;
+        public Integer use = 0;
+        ValidBracketTest (ValidBracketSolution solution){
+            this.solution = solution;
+        }
+
+        public boolean isValid(String s, Integer use) {
+            switch (use) {
+                case 1 : return solution.isValidUp(s);
+                default:return solution.isValid(s);
+            }
+        }
+
+    }
+
+    public static void testTwo(ValidBracketSolution solution, int type) {
+        ValidBracketTest test = new ValidBracketTest(solution);
+        String bracket = "))";
+        System.out.println("示例1: ");
+        System.out.println("输入字符串为: " + bracket);
+        System.out.println("测试的结果为: " + test.isValid(bracket, type));
+        System.out.println("期望的结果为: false");
 
     }
 
@@ -61,40 +89,45 @@ public class ValidBracketSolution {
      * 示例的测试用例
      * @param solution      对象
      */
-    public static void testOne(ValidBracketSolution solution) {
+    public static void testOne(ValidBracketSolution solution, Integer type) {
+        ValidBracketTest test = new ValidBracketTest(solution);
         String bracket = "()";
         System.out.println("示例1: ");
         System.out.println("输入字符串为: " + bracket);
-        System.out.println("测试的结果为: " + solution.isValid(bracket));
+        System.out.println("测试的结果为: " + test.isValid(bracket, type));
         System.out.println("期望的结果为: true");
 
         System.out.println("示例2: ");
         bracket = "()[]{}";
         System.out.println("输入字符串为: " + bracket);
-        System.out.println("测试的结果为: " + solution.isValid(bracket));
+        System.out.println("测试的结果为: " + test.isValid(bracket, type));
         System.out.println("期望的结果为: true");
 
         System.out.println("示例3: ");
         bracket = "(]";
         System.out.println("输入字符串为: " + bracket);
-        System.out.println("测试的结果为: " + solution.isValid(bracket));
+        System.out.println("测试的结果为: " + test.isValid(bracket, type));
         System.out.println("期望的结果为: false");
 
         System.out.println("示例4: ");
         bracket = "([)]";
         System.out.println("输入字符串为: " + bracket);
-        System.out.println("测试的结果为: " + solution.isValid(bracket));
+        System.out.println("测试的结果为: " + test.isValid(bracket, type));
         System.out.println("期望的结果为: false");
 
         System.out.println("示例5: ");
         bracket = "{[]}";
         System.out.println("输入字符串为: " + bracket);
-        System.out.println("测试的结果为: " + solution.isValid(bracket));
+        System.out.println("测试的结果为: " + test.isValid(bracket, type));
         System.out.println("期望的结果为: true");
     }
 
     /**
      * 实现括号配对
+     *
+     * 解答成功:
+     * 				执行耗时:2 ms,击败了74.04% 的Java用户
+     * 				内存消耗:36.4 MB,击败了85.39% 的Java用户
      *
      * @param s     括号的字符串
      * @return
@@ -126,5 +159,38 @@ public class ValidBracketSolution {
             case '[':return ']';
             default:return 0;
         }
+    }
+
+
+    /**
+     * 方法二 有效的括号实现
+     *
+     * 解答成功:
+     * 				执行耗时:4 ms,击败了11.20% 的Java用户
+     * 				内存消耗:36.7 MB,击败了36.88% 的Java用户
+     * @param s
+     * @return
+     */
+    public boolean isValidUp(String s) {
+        if (s == null || s.length() % 2 != 0) {
+            return false;
+        }
+        Map<Character, Character> map = new HashMap<>(3);
+        map.put('(', ')');
+        map.put('[', ']');
+        map.put('{', '}');
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                stack.push(s.charAt(i));
+                continue;
+            } else {
+                if (stack.isEmpty() || !map.get(stack.peek()).equals(s.charAt(i))) {
+                    return false;
+                }
+                stack.pop();
+            }
+        }
+        return stack.isEmpty();
     }
 }
