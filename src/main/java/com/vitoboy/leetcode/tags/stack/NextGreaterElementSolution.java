@@ -1,6 +1,8 @@
 package com.vitoboy.leetcode.tags.stack;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Stack;
 
 /**
  * 给你两个 没有重复元素 的数组 nums1 和 nums2 ，其中nums1 是 nums2 的子集。 
@@ -60,7 +62,7 @@ public class NextGreaterElementSolution {
         int[][] two = testSubmit();
         int[] num1 = new int[]{4,1,2};
         int[] num2 = new int[]{1,3,4,2};
-        int[] ints = solution.nextGreaterElement(two[0], two[1]);
+        int[] ints = solution.nextGreaterElementII(two[0], two[1]);
         System.out.println(Arrays.toString(two[2]));
         System.out.println(Arrays.toString(ints));
 
@@ -120,7 +122,52 @@ public class NextGreaterElementSolution {
     }
 
 
+    /**
+     * 单调栈
+     *
+     * 我们可以忽略数组 `nums1`，先对将 `nums2` 中的每一个元素，求出其下一个更大的元素。
+     * 随后对于将这些答案放入哈希映射（HashMap）中，再遍历数组 `nums1`，并直接找出答案。
+     * 对于 `nums2`，我们可以使用单调栈来解决这个问题。
+     *
+     * 我们首先把第一个元素 `nums2[1]` 放入栈，随后对于第二个元素 `nums2[2]`，
+     * 如果 `nums2[2] > nums2[1]`，那么我们就找到了 `nums2[1]` 的下一个更大元素 `nums2[2]`，此时就可以把 `nums2[1]` 出栈并把 `nums2[2]` 入栈；
+     * 如果 `nums2[2] <= nums2[1]`，我们就仅把 `nums2[2]` 入栈。
+     * 对于第三个元素 `nums2[3]`，此时栈中有若干个元素，那么所有比 `nums2[3]` 小的元素都找到了下一个更大元素（即 `nums2[3]`），因此可以出栈，在这之后，我们将 `nums2[3]` 入栈，以此类推。
+     *
+     * 可以发现，我们维护了一个单调栈，栈中的元素从栈顶到栈底是单调不降的。
+     * 当我们遇到一个新的元素 `nums2[i]` 时，我们判断栈顶元素是否小于 `nums2[i]`，
+     * 如果是，那么栈顶元素的下一个更大元素即为 `nums2[i]`，我们将栈顶元素出栈。
+     * 重复这一操作，直到栈为空或者栈顶元素大于 `nums2[i]`。
+     * 此时我们将 `nums2[i]` 入栈，保持栈的单调性，并对接下来的 `nums2[i + 1], nums2[i + 2] ...` 执行同样的操作。
+     *
+     *  **复杂度分析**
+     *
+     *  * 时间复杂度：*O(M+N)*，其中 *M* 和 *N* 分别是数组 `nums1` 和 `nums2` 的长度。
+     *
+     *  * 空间复杂度：*O(N)*。我们在遍历 `nums2` 时，需要使用栈，以及哈希映射用来临时存储答案。
+     *
+     * 解答成功:
+     * 				执行耗时:5 ms,击败了81.26% 的Java用户
+     * 				内存消耗:38.6 MB,击败了57.10% 的Java用户
+     *
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public int[] nextGreaterElementII(int[] nums1, int[] nums2) {
-        return null;
+        Stack< Integer > stack = new Stack < > ();
+        HashMap < Integer, Integer > map = new HashMap< >();
+        int[] res = new int[nums1.length];
+        for (int i = 0; i < nums2.length; i++) {
+            while (!stack.empty() && nums2[i] > stack.peek())
+                map.put(stack.pop(), nums2[i]);
+            stack.push(nums2[i]);
+        }
+        while (!stack.empty())
+            map.put(stack.pop(), -1);
+        for (int i = 0; i < nums1.length; i++) {
+            res[i] = map.get(nums1[i]);
+        }
+        return res;
     }
 }
