@@ -2,6 +2,7 @@ package com.vitoboy.leetcode.tags.stack;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -169,5 +170,11 @@ public class NextGreaterElementSolution {
             res[i] = map.get(nums1[i]);
         }
         return res;
+    }
+
+
+    public int[] nextGreaterElementIII(int[] nums1, int[] nums2) {
+
+        return null;
     }
 }
