@@ -55,4 +55,8 @@ package com.vitoboy.leetcode.daily;
  * @Version: 1.0
  */
 public class I1269INumWays {
+    // todo 待解决问题
+    public static void main(String[] args) {
+        System.out.println("待解决问题");
+    }
 }

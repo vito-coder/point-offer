@@ -6,6 +6,7 @@ package com.vitoboy.leetcode.daily;
  * @Version: 1.0
  */
 public class I263IIsUgly {
+    // todo 待解决问题
     public static void main(String[] args) {
         IsUgly isUgly = new IsUgly();
         System.out.println("result is : " + isUgly.isUgly(6));
