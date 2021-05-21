@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode.daily;
+package com.vitoboy.leetcode.daily.aprilbefore;
 
 /**
  * 第995题

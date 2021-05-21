@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode.daily;
+package com.vitoboy.leetcode.daily.aprilbefore;
 
 /**
  *给定一个直方图(也称柱状图)，假设有人从上面源源不断地倒水，最后直方图能存多少水量?直方图的宽度为 1。 

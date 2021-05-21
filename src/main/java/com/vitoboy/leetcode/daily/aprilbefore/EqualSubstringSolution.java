@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode.daily;
+package com.vitoboy.leetcode.daily.aprilbefore;
 
 import java.util.LinkedList;
 import java.util.Queue;

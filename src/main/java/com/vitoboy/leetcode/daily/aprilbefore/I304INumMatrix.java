@@ -1,6 +1,4 @@
-package com.vitoboy.leetcode.daily;
-
-import java.util.Arrays;
+package com.vitoboy.leetcode.daily.aprilbefore;
 
 /**
  * 

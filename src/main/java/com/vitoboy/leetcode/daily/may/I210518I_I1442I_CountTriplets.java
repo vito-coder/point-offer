@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode.daily;
+package com.vitoboy.leetcode.daily.may;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -68,9 +68,9 @@ import java.util.Map;
  * @Date: 2021/5/18 上午9:44
  * @Version: 1.0
  */
-public class I210518I_I1442ICountTriplets {
+public class I210518I_I1442I_CountTriplets {
     public static void main(String[] args) {
-        I210518I_I1442ICountTriplets countTriplets = new I210518I_I1442ICountTriplets();
+        I210518I_I1442I_CountTriplets countTriplets = new I210518I_I1442I_CountTriplets();
 
         int[] arr = new int[]{1,1,1,1,1};
         System.out.println("result is : " + countTriplets.countTriplets(arr));

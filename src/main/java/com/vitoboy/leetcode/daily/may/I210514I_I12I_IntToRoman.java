@@ -1,6 +1,4 @@
-package com.vitoboy.leetcode.daily;
-
-import com.sun.deploy.util.StringUtils;
+package com.vitoboy.leetcode.daily.may;
 
 import java.util.Stack;
 
@@ -81,9 +79,9 @@ import java.util.Stack;
  * @Date: 2021/5/14 下午2:50
  * @Version: 1.0
  */
-public class I210514I_I12IIntToRoman {
+public class I210514I_I12I_IntToRoman {
     public static void main(String[] args) {
-        I210514I_I12IIntToRoman roman = new I210514I_I12IIntToRoman();
+        I210514I_I12I_IntToRoman roman = new I210514I_I12I_IntToRoman();
         System.out.println("result is : " + roman.intToRoman(3));
         System.out.println("expect is : 'III'");
         System.out.println("result is : " + roman.intToRoman(4));

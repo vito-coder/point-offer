@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode.daily;
+package com.vitoboy.leetcode.daily.aprilbefore;
 
 /**
  *颠倒给定的 32 位无符号整数的二进制位。 

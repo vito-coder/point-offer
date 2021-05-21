@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode.daily;
+package com.vitoboy.leetcode.daily.may;
 
 /**
  * 在二叉树中，根节点位于深度 0 处，每个深度为 k 的节点的子节点位于深度 k+1 处。 
@@ -56,7 +56,6 @@ package com.vitoboy.leetcode.daily;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 /**
  * Definition for a binary tree node.
@@ -73,7 +72,7 @@ import java.util.Stack;
  *     }
  * }
  */
-public class I210517I_I993IIsCousins {
+public class I210517I_I993I_IsCousins {
 
     static class TreeNode {
         int val;
@@ -92,7 +91,7 @@ public class I210517I_I993IIsCousins {
         TreeNode node2 = new TreeNode(2, null, new TreeNode(4));
         TreeNode node3 = new TreeNode(3, null, new TreeNode(5));
         TreeNode node = new TreeNode(1, node2, node3);
-        I210517I_I993IIsCousins isCousins = new I210517I_I993IIsCousins();
+        I210517I_I993I_IsCousins isCousins = new I210517I_I993I_IsCousins();
         System.out.println(isCousins.isCousins(node, 5, 4));
 
         TreeNode node4 = new TreeNode(4, new TreeNode(5), null);

@@ -1,6 +1,4 @@
-package com.vitoboy.leetcode.daily;
-
-import javafx.collections.transformation.SortedList;
+package com.vitoboy.leetcode.daily.may;
 
 import java.util.*;
 
