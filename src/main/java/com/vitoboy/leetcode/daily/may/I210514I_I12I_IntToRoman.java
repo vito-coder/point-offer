@@ -81,11 +81,22 @@ import java.util.Stack;
  */
 public class I210514I_I12I_IntToRoman {
     public static void main(String[] args) {
+
+        I210514I_I12I_IntToRoman roman = new I210514I_I12I_IntToRoman();
+        System.out.println(roman.intToRoman(7));
+        System.out.println(roman.intToRoman(42));
+        System.out.println(roman.intToRoman(57));
+
+    }
+
+    public static void test() {
         I210514I_I12I_IntToRoman roman = new I210514I_I12I_IntToRoman();
         System.out.println("result is : " + roman.intToRoman(3));
         System.out.println("expect is : 'III'");
         System.out.println("result is : " + roman.intToRoman(4));
         System.out.println("expect is : 'IV'");
+        System.out.println("result is : " + roman.intToRoman(5));
+        System.out.println("expect is : 'V'");
         System.out.println("result is : " + roman.intToRoman(9));
         System.out.println("expect is : 'IX'");
         System.out.println("result is : " + roman.intToRoman(58));

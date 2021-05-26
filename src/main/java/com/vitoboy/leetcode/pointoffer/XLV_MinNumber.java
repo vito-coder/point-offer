@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -28,7 +28,7 @@ package com.vitoboy.leetcode;
  * 输出结果可能非常大，所以你需要返回一个字符串而不是整数
  * 拼接起来的数字可能会有前导 0，最后结果不需要去掉前导 0
  */
-public class XLIV_MinNumber {
+public class XLV_MinNumber {
     public static void main(String[] args) {
         // todo
     }

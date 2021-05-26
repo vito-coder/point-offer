@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -23,7 +23,7 @@ package com.vitoboy.leetcode;
  *
  * 0 <= num < 2^31
  */
-public class XLV_TranslateNum {
+public class XLVI_TranslateNum {
     public static void main(String[] args) {
         // todo
     }

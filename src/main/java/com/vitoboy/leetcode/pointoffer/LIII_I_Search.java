@@ -1,6 +1,4 @@
-package com.vitoboy.leetcode;
-
-import javax.swing.plaf.IconUIResource;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -26,10 +24,10 @@ import javax.swing.plaf.IconUIResource;
  *
  * 0 <= 数组长度 <= 50000
  */
-public class LII_Search {
+public class LIII_I_Search {
     public static void main(String[] args) {
         int[] nums = new int[]{5,7,7,8,8,10};
-        LII_Search search = new LII_Search();
+        LIII_I_Search search = new LIII_I_Search();
         System.out.println(search.search(nums, 6));
         nums = new int[]{2,2};
         System.out.println(search.search(nums, 2));

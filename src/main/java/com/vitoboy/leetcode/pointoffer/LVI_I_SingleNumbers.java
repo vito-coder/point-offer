@@ -30,10 +30,10 @@ import java.util.Map;
  * 2 <= nums.length <= 10000
  *
  */
-public class LVII_SingleNumbers {
+public class LVI_I_SingleNumbers {
     public static void main(String[] args) {
         int[] nums = new int[]{4,1,4,6};
-        LVII_SingleNumbers singleNumbers = new LVII_SingleNumbers();
+        LVI_I_SingleNumbers singleNumbers = new LVI_I_SingleNumbers();
         System.out.println(Arrays.toString(singleNumbers.singleNumbersFaster(nums)));
 
 

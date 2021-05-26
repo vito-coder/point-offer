@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -27,7 +27,7 @@ package com.vitoboy.leetcode;
  *
  * 0 <= n < 2^31
  */
-public class XLIII_FindNthDigit {
+public class XLIV_FindNthDigit {
     public static void main(String[] args) {
         // todo
     }

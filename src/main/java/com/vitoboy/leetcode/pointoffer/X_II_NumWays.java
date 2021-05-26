@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -21,9 +21,9 @@ package com.vitoboy.leetcode;
  * 提示：
  *
  * 0 <= n <= 100
- * @see     VII_Fibonacci
+ * @see     X_I_Fibonacci
  */
-public class VIII_NumWays {
+public class X_II_NumWays {
     public static void main(String[] args) {
 
         System.out.println(numWays(7));

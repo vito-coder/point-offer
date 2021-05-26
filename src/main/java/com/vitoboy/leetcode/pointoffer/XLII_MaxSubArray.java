@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -24,7 +24,7 @@ package com.vitoboy.leetcode;
  * 1 <= arr.length <= 10^5
  * -100 <= arr[i] <= 100
  */
-public class XLI_MaxSubArray {
+public class XLII_MaxSubArray {
 
     public static void main(String[] args) {
         // todo

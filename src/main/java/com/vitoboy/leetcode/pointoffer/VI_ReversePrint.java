@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 import java.util.Arrays;
 import java.util.Stack;
@@ -25,7 +25,7 @@ import java.util.Stack;
  *
  *
  */
-public class IV_ReversePrint {
+public class VI_ReversePrint {
 
     public static void main(String[] args) {
 

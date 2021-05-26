@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -32,7 +32,7 @@ package com.vitoboy.leetcode;
  *
  * s.length <= 40000
  */
-public class XLVII_LengthOfLongestSubstring {
+public class XLVIII_LengthOfLongestSubstring {
     public static void main(String[] args) {
         // todo
     }

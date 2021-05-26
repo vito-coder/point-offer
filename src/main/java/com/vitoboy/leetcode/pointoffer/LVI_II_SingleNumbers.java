@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,10 +29,10 @@ import java.util.Map;
  * 1 <= nums[i] < 2^31
  *
  */
-public class LVIII_SingleNumbers {
+public class LVI_II_SingleNumbers {
     public static void main(String[] args) {
         int[] nums = new int[]{9,1,7,9,7,9,7};
-        LVIII_SingleNumbers singleNumbers = new LVIII_SingleNumbers();
+        LVI_II_SingleNumbers singleNumbers = new LVI_II_SingleNumbers();
         System.out.println(singleNumbers.singleNumber(nums));
         nums = new int[]{3,4,3,3};
         System.out.println(singleNumbers.singleNumber(nums));

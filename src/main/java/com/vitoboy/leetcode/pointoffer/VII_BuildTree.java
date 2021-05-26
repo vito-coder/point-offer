@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ import java.util.Stack;
  *
  * 0 <= 节点个数 <= 5000
  */
-public class V_BuildTree {
+public class VII_BuildTree {
     public static void main(String[] args) {
 
     }

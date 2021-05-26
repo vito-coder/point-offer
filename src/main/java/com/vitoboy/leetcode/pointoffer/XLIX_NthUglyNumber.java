@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -20,7 +20,7 @@ package com.vitoboy.leetcode;
  * 1 是丑数。
  * n 不超过1690。
  */
-public class XLVIII_NthUglyNumber {
+public class XLIX_NthUglyNumber {
     public static void main(String[] args) {
         // todo
     }

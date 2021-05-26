@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -29,7 +29,7 @@ package com.vitoboy.leetcode;
  * 0 < grid.length <= 200
  * 0 < grid[0].length <= 200
  */
-public class XLVI_MaxValue {
+public class XLVII_MaxValue {
     public static void main(String[] args) {
         // todo
     }

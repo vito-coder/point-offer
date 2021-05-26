@@ -1,4 +1,5 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
+
 
 /**
  * @Author: vito

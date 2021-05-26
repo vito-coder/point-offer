@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -42,7 +42,7 @@ package com.vitoboy.leetcode;
  * 1 <= 树的结点个数 <= 10000
  *
  */
-public class LVI_BalancedTree {
+public class LV_II_BalancedTree {
     public static void main(String[] args) {
         // todo
     }

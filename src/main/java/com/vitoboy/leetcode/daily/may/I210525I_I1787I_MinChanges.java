@@ -53,6 +53,7 @@ import java.util.*;
  */
 public class I210525I_I1787I_MinChanges {
     public static void main(String[] args) {
+        // todo 需要自己在理解题目的基础上, 自己实现
 
     }
 

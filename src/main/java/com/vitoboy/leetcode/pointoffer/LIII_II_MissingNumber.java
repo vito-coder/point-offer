@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -27,10 +27,10 @@ package com.vitoboy.leetcode;
  * 1 <= 数组长度 <= 10000
  *
  */
-public class LIII_MissingNumber {
+public class LIII_II_MissingNumber {
     public static void main(String[] args) {
         int[] arr = new int[]{0,1,3};
-        LIII_MissingNumber number = new LIII_MissingNumber();
+        LIII_II_MissingNumber number = new LIII_II_MissingNumber();
         System.out.println(number.missingNumber(arr));
         arr = new int[]{0,1,2,3,4,5,6,7,8,10};
         System.out.println(number.missingNumber(arr));

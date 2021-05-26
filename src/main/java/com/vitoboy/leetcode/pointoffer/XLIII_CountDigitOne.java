@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 import java.util.Stack;
 
@@ -28,10 +28,10 @@ import java.util.Stack;
  *
  * 1 <= n < 2^31
  */
-public class XLII_CountDigitOne {
+public class XLIII_CountDigitOne {
 
     public static void main(String[] args) {
-        XLII_CountDigitOne countDigitOne = new XLII_CountDigitOne();
+        XLIII_CountDigitOne countDigitOne = new XLIII_CountDigitOne();
         for (int i = 1; i <= 100; i++) {
             System.out.println(countDigitOne.countDigitOne(i));
         }

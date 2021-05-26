@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -25,7 +25,7 @@ package com.vitoboy.leetcode;
  *
  * 节点总数 <= 10000
  */
-public class LV_MaxDepth {
+public class LV_I_MaxDepth {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
         root.left = new TreeNode(9);
@@ -34,7 +34,7 @@ public class LV_MaxDepth {
         node.right = new TreeNode(7);
         root.right = node;
 
-        LV_MaxDepth depth = new LV_MaxDepth();
+        LV_I_MaxDepth depth = new LV_I_MaxDepth();
         System.out.println(depth.maxDepth(root));
     }
 

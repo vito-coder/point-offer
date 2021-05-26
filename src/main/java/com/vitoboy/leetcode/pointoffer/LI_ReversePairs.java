@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 /**
  * @Author: vito
@@ -20,7 +20,7 @@ package com.vitoboy.leetcode;
  *
  * 0 <= 数组长度 <= 50000
  */
-public class L_ReversePairs {
+public class LI_ReversePairs {
     public static void main(String[] args) {
         // todo
     }

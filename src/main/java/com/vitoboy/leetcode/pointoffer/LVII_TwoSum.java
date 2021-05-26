@@ -1,4 +1,4 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
 
 import java.util.Arrays;
 
@@ -29,10 +29,10 @@ import java.util.Arrays;
  * 1 <= nums.length <= 10^5
  * 1 <= nums[i] <= 10^6
  */
-public class LIX_TwoSum {
+public class LVII_TwoSum {
     public static void main(String[] args) {
         int[] nums = new int[]{10,26,30,31,47,60};
-        LIX_TwoSum sum = new LIX_TwoSum();
+        LVII_TwoSum sum = new LVII_TwoSum();
         System.out.println(Arrays.toString(sum.twoSum(nums, 40)));
 //
 //
