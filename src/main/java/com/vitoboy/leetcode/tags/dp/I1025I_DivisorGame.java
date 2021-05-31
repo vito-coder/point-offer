@@ -37,9 +37,15 @@ package com.vitoboy.leetcode.tags.dp;
  */
 public class I1025I_DivisorGame {
     public static void main(String[] args) {
+        // todo 待实现逻辑并测试
 
     }
 
+    /**
+     *
+     * @param n
+     * @return
+     */
     public boolean divisorGame(int n) {
         return false;
 
