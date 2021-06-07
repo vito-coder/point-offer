@@ -17,6 +17,7 @@ import java.util.Stack;
  * 示例 1：
  *
  * 输入：n = 12
+ *          1,10,11,12
  * 输出：5
  * 示例 2：
  *
@@ -55,12 +56,40 @@ public class XLIII_CountDigitOne {
      * ..
      * 110
      *
+     * 个位时, 有 1次
+     * 两位时, 有 1*9+10=19次
+     * 三位时, 有 19*9+100=271次
+     * 四位时, 有 271*9+1000=2439次
+     *
+     * 2147483647
      * @param n
      * @return
      */
     public int countDigitOne(int n) {
-        // todo
-        return 0;
+        int[] temp = new int[10];
+        temp[0] = 1;
+        int ten = 1;
+        for (int i = 1; i < temp.length; i++) {
+            temp[i] = temp[i-1]*9 + ten*10;
+            ten = ten*10;
+        }
+        int time = 0;
+        int bit = 0;
+        int sum = 0;
+        while (n > 0) {
+            bit = n % 10;
+            if (bit != 0) {
+                if (time == 0) {
+                    sum += temp[time];
+                    time++;
+                } else {
+                    sum += bit*temp[time];
+                }
+                sum += bit*temp[time-1];
+            }
+            n = n/10;
+        }
+        return sum;
 
     }
 }

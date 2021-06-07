@@ -45,6 +45,12 @@ public class XXIV_SubStructure {
     }
 
     public boolean isSubStructure(TreeNode A, TreeNode B) {
-        return false;
+        return (A != null && B!=null) && (recov(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B));
+    }
+
+    private boolean recov(TreeNode A, TreeNode B) {
+        if (B == null) return true;
+        if (A == null || A.val != B.val) return false;
+        return recov(A.left, B.left) && recov(A.right, B.right);
     }
 }

@@ -29,9 +29,9 @@ import java.util.*;
  *
  * 节点总数 <= 1000
  */
-public class XXX_LevelOrder {
+public class XXXII_I_LevelOrder {
     public static void main(String[] args) {
-        XXX_LevelOrder levelOrder = new XXX_LevelOrder();
+        XXXII_I_LevelOrder levelOrder = new XXXII_I_LevelOrder();
         TreeNode node20 = new TreeNode(20);
         node20.left = new TreeNode(15);
         node20.right = new TreeNode(7);
