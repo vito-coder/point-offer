@@ -36,11 +36,33 @@ package com.vitoboy.leetcode.tags.math;
  */
 public class I292I_CanWinNim {
     public static void main(String[] args) {
+        I292I_CanWinNim winNim = new I292I_CanWinNim();
+        System.out.println(winNim.canWinNim(8));
         
     }
 
+    /**
+     * 可以这么考虑,
+     * 当 n=1时, true;
+     * 当 n=2时, true;
+     * 当 n=3时, true;
+     * 当 n=4时, fase;
+     * 当 n=5时, true;
+     * 当 n=6时, true;
+     * 当 n=7时, true;
+     * 当 n=8时, fase;
+     * 当 n=9时, true;
+     *
+     * 即, 能初4整除时, 不能赢, 其它情况都能赢
+     *
+     *
+     * 时间复杂度: O(1)
+     * 空间复杂度: O(1)
+     *
+     * @param n
+     * @return
+     */
     public boolean canWinNim(int n) {
-
-        return false;
+        return (n % 4) != 0;
     }
 }
