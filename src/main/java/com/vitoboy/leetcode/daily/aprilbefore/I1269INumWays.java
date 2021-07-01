@@ -9,11 +9,8 @@ package com.vitoboy.leetcode.daily.aprilbefore;
  *  给你两个整数 steps 和 arrLen ，请你计算并返回：在恰好执行 steps 次操作以后，指针仍然指向索引 0 处的方案数。 
  * 
  *  由于答案可能会很大，请返回方案数 模 10^9 + 7 后的结果。 
- * 
- *  
- * 
- *  示例 1： 
- * 
+ *
+ *  示例 1：
  *  输入：steps = 3, arrLen = 2
  * 输出：4
  * 解释：3 步后，总共有 4 种不同的方法可以停在索引 0 处。
@@ -23,8 +20,7 @@ package com.vitoboy.leetcode.daily.aprilbefore;
  * 不动，不动，不动
  *  
  * 
- *  示例 2： 
- * 
+ *  示例 2：
  *  输入：steps = 2, arrLen = 4
  * 输出：2
  * 解释：2 步后，总共有 2 种不同的方法可以停在索引 0 处。
@@ -32,17 +28,12 @@ package com.vitoboy.leetcode.daily.aprilbefore;
  * 不动，不动
  *  
  * 
- *  示例 3： 
- * 
+ *  示例 3：
  *  输入：steps = 4, arrLen = 2
  * 输出：8
- *  
+ *
  * 
- *  
- * 
- *  提示： 
- * 
- *  
+ *  提示：
  *  1 <= steps <= 500 
  *  1 <= arrLen <= 10^6 
  *  
@@ -58,5 +49,9 @@ public class I1269INumWays {
     // todo 待解决问题
     public static void main(String[] args) {
         System.out.println("待解决问题");
+    }
+
+    public int numWays(int steps, int arrLen) {
+        return 0;
     }
 }
