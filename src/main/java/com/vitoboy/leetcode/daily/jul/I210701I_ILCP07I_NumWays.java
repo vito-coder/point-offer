@@ -46,6 +46,14 @@ public class I210701I_ILCP07I_NumWays {
         
     }
 
+    /**
+     * todo
+     *
+     * @param n
+     * @param relation
+     * @param k
+     * @return
+     */
     public int numWays(int n, int[][] relation, int k) {
         Set<String> setWays = new HashSet<>();
         Set<int[]> begin = new HashSet<>();
