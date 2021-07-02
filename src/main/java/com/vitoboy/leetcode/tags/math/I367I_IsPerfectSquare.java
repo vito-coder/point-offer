@@ -34,25 +34,34 @@ public class I367I_IsPerfectSquare {
         System.out.println("expect is : false");
         System.out.println(square.isPerfectSquare(345));
         System.out.println("expect is : false");
+        System.out.println(square.isPerfectSquare(34762816));
+        System.out.println("expect is : true");
 
     }
 
     /**
-     * todo
+     * 				解答成功:
+     * 				执行耗时:0 ms,击败了100.00% 的Java用户
+     * 				内存消耗:35.2 MB,击败了34.83% 的Java用户
+     *
+     * 	时间复杂度: O(logN)
+     * 	空间复杂度: O(1)
      *
      * @param num
      * @return
      */
     public boolean isPerfectSquare(int num) {
-        int low = 1, high = num, mid = 1, tmp = 0;
+        if (num == 1) return true;
+        int low = 1, high = num, mid = 1;
+        long tmp = 0;
         while (low < high) {
             mid = low + (high-low)/2;
-            tmp = num/mid;
-            if (tmp == mid) return true;
-            else if (tmp > mid) {
-                high = mid-1;
+            tmp = 1L*mid * mid;
+            if (tmp == num) return true;
+            else if (tmp > num) {
+                high = mid;
             } else {
-                low = mid;
+                low = mid+1;
             }
         }
         return false;
