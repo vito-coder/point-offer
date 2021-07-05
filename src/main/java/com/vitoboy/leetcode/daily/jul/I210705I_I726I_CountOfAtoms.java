@@ -57,81 +57,129 @@ import java.util.TreeMap;
  */
 public class I210705I_I726I_CountOfAtoms {
     public static void main(String[] args) {
-        
+        I210705I_I726I_CountOfAtoms atoms = new I210705I_I726I_CountOfAtoms();
+        String formula = "K4(ON(SO3)2)2";
+        System.out.println(atoms.countOfAtoms(formula));
+        System.out.println("expect is : K4N2O14S4");
+        formula = "H2O";
+        System.out.println(atoms.countOfAtoms(formula));
+        System.out.println("expect is : H2O");
+        formula = "Mg(OH)2";
+        System.out.println(atoms.countOfAtoms(formula));
+        System.out.println("expect is : H2MgO2");
     }
 
     /**
-     * todo
+     * 				解答成功:
+     * 				执行耗时:10 ms,击败了29.29% 的Java用户
+     * 				内存消耗:37.3 MB,击败了27.86% 的Java用户
+     *
+     * 就硬算
+     * 时间复杂度: O(N)
+     * 空间复杂度: O(N)
+     *
      * @param formula
      * @return
      */
     public String countOfAtoms(String formula) {
-        Stack<String> word = new Stack<>();
-        Stack<String> nums = new Stack<>();
-        StringBuilder buffer = new StringBuilder();
-        Map<String, Integer> countMap = new TreeMap<>();
-        boolean isNum = false;
+        Stack<String> stack = new Stack<>();
+        StringBuilder builder = new StringBuilder();
+        boolean prenum = false;
         for (int i = 0, len = formula.length(); i < len; i++) {
             char ch = formula.charAt(i);
             if (isNum(ch)) {
-                if (isNum) {
-                    buffer.append(ch);
-                } else if (buffer.length() > 0){
-                    word.add(buffer.toString());
-                    isNum = true;
-                    buffer.delete(0, buffer.length());
-                    buffer.append(ch);
+                if (prenum) {
+                    builder.append(ch);
                 } else {
-                    isNum = true;
-                    buffer.append(ch);
-                }
-                continue;
-            }
-            if (isBracket(ch)) {
-                if (buffer.length() > 0) {
-                    if (isNum) {
-                        nums.add(buffer.toString());
-                    } else {
-                        word.add(buffer.toString());
-                        nums.add("1");
+                    prenum = true;
+                    if (builder.length() > 0) {
+                        stack.add(builder.toString());
+                        builder = new StringBuilder();
                     }
-                    buffer.delete(0, buffer.length());
+                    builder.append(ch);
                 }
-                word.add(ch+"");
                 continue;
             }
-            if (isLowerCase(ch)) {
-                buffer.append(ch);
+            if (isBracket(ch)){
+                if (builder.length() > 0) {
+                    stack.add(builder.toString());
+                    builder = new StringBuilder();
+                    if (prenum) prenum = false;
+                }
+                stack.add(ch + "");
                 continue;
             }
             if (isUpperCase(ch)) {
-                if (buffer.length() > 0) {
-                    if (isNum) {
-                        isNum = false;
-                        nums.add(buffer.toString());
-                        buffer.delete(0, buffer.length());
-                        buffer.append(ch);
-                    } else {
-                        word.add(buffer.toString());
-                        nums.add("1");
-                        buffer.delete(0, buffer.length());
-                        buffer.append(ch);
-                    }
-                    continue;
+                if (builder.length() > 0) {
+                    if (prenum) prenum = false;
+                    stack.add(builder.toString());
+                    builder = new StringBuilder();
                 }
-                buffer.append(ch);
+                builder.append(ch);
+                continue;
+            }
+            if (isLowerCase(ch)) {
+                builder.append(ch);
             }
         }
-        Stack<Integer> timeStack = new Stack<>();
-        Stack<String> bracketStack = new Stack<>();
-        while (!word.isEmpty()) {
-            String str = word.pop();
-            if (strBracket(str)) {
-                bracketStack.add(getAnthorBracket(str));
+        if (builder.length() > 0){
+            stack.add(builder.toString());
+        }
+        // K4(ON(SO3)2)2  ==> 'K', '4', '(', 'O', 'N', '(', 'S', 'O', '3', ')', '2', ')', '2'
+        int time = 1;
+        TreeMap<String, Integer> countMap = countStackOfAtoms(stack, time);
+        builder = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : countMap.entrySet()) {
+            builder.append(entry.getKey());
+            if (entry.getValue() > 1) {
+                builder.append(entry.getValue());
             }
         }
+        return builder.toString();
+    }
 
-        return null;
+    private TreeMap<String, Integer> countStackOfAtoms(Stack<String> stack, int time) {
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+        int local = time;
+        while (!stack.isEmpty()) {
+            String str = stack.pop();
+            if (isInt(str)) {
+                local = Integer.parseInt(str)*local;
+                continue;
+            }
+            if (strBracket(str)) {
+                // 结束标志
+                if (")".equals(str)) {
+                    TreeMap<String, Integer> count = countStackOfAtoms(stack, local);
+                    for (Map.Entry<String, Integer> entry : count.entrySet()) {
+                        if(treeMap.containsKey(entry.getKey())) {
+                            treeMap.put(entry.getKey(), entry.getValue() + treeMap.get(entry.getKey()));
+                        } else {
+                            treeMap.put(entry.getKey(), entry.getValue());
+                        }
+                    }
+                    local = time;
+                } else {
+                    return treeMap;
+                }
+                continue;
+            }
+            if (treeMap.containsKey(str)) {
+                treeMap.put(str, treeMap.get(str) + local);
+            } else {
+                treeMap.put(str, local);
+            }
+            local = time;
+        }
+        return treeMap;
+    }
+
+    private boolean isInt(String str) {
+        boolean isint = true;
+        for (int i = 0, len = str.length(); i < len; i++) {
+            if (!isNum(str.charAt(i))) return false;
+        }
+        return true;
     }
 
     private boolean isNum(char ch) {
@@ -163,10 +211,5 @@ public class I210705I_I726I_CountOfAtoms {
     private boolean strBracket(String ch) {
         if ("(".equals(ch) || ")".equals(ch)) return true;
         else return  false;
-    }
-
-    private String getAnthorBracket(String ch) {
-        if ("(".equals(ch)) return ")";
-        else return "(";
     }
 }
