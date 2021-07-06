@@ -71,6 +71,21 @@ public class I210706I_I1418I_DisplayTable {
      * 时间复杂度: O(N)
      * 空间复杂度: O(N)
      *
+     * 复杂度分析
+     *
+     * 为了便于进行复杂度分析，我们将所有字符串长度均视作常数。
+     *
+     * 时间复杂度：O(T+NlogN+MlogM+MN)。其中 T 是数组 orders 的长度，N 是数据表的列数（即餐品的数量），M 是数据表的行数（即餐桌的数量）。时间复杂度由以下几个部分组成：
+     * 遍历订单并保存信息的时间复杂度为 O(T)；
+     * 对餐品名称和餐桌编号分别进行排序，时间复杂度分别为 O(NlogN) 和 O(MlogM)；
+     * 将数据逐行填入表格，时间复杂度为 O(MN)。
+     * 空间复杂度：O(T + N + M)。注意这里只计算额外的空间复杂度，不计入存放最终数据表（即答案）需要的空间。
+     *
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/display-table-of-food-orders-in-a-restaurant/solution/dian-cai-zhan-shi-biao-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
      * @param orders
      * @return
      */
@@ -108,7 +123,8 @@ public class I210706I_I1418I_DisplayTable {
         List<List<String>> orderList = new ArrayList<>();
         for (Integer integer : tableList) {
             List<String> list = new ArrayList<>();
-            Map<String, Integer> map = tableFoodCountMap.get(integer+"");
+            Map<String, Integer> map = tableFoodCountMap.get(integer);
+            list.add(integer+"");
             if (map == null || map.isEmpty()) {
                 for (int i = 0, len = foodSet.size(); i < len; i++) {
                     list.add("0");
