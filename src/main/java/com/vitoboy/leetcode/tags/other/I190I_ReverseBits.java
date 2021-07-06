@@ -57,17 +57,35 @@ import java.util.Set;
  */
 public class I190I_ReverseBits {
     public static void main(String[] args) {
-        System.out.println(Integer.toBinaryString(-3));
-        System.out.println(Integer.toBinaryString(-10737418));
-        Integer.bitCount(-3);
-        Set<Integer> set = new HashSet<>();
+        I190I_ReverseBits bits = new I190I_ReverseBits();
+        System.out.println(bits.reverseBits(-3));
+        System.out.println("expect is : -10737418");
+        System.out.println(bits.reverseBits(43261596));
+        System.out.println("expect is : 964176192");
+        System.out.println(2 << 1);
+        System.out.println(23425 & 1);
 
     }
 
-    // todo
+    /**
+     * 				解答成功:
+     * 				执行耗时:1 ms,击败了100.00% 的Java用户
+     * 				内存消耗:38.2 MB,击败了49.47% 的Java用户
+     *
+     * 时间复杂度: O(1)
+     * 空间复杂度: O(1)
+     *
+     * @param n
+     * @return
+     */
     // you need treat n as an unsigned value
     public int reverseBits(int n) {
-
-        return 0;
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            res = res << 1;
+            res += (n & 1);
+            n = n >> 1;
+        }
+        return res;
     }
 }
