@@ -40,24 +40,57 @@ package com.vitoboy.leetcode.tags.array;
 public class I463I_IslandPerimeter {
     public static void main(String[] args) {
 
-        
+
     }
 
     /**
      * 错误代码, 考虑一下, 错在哪?
-     *
+     * <p>
      * todo
      *
      * @param grid
      * @return
      */
-    public int islandPerimeter(int[][] grid) {
+    public int islandPerimeterError(int[][] grid) {
         int m = grid.length, n = grid[0].length, count = 0;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 1) count++;
             }
         }
-        return count*4 - (count-1)*2;
+        return count * 4 - (count - 1) * 2;
+    }
+
+
+    /**
+     * 				解答成功:
+     * 				执行耗时:8 ms,击败了79.95% 的Java用户
+     * 				内存消耗:39.2 MB,击败了97.06% 的Java用户
+     *
+     * 时间复杂度: O(MN)
+     * 空间复杂度: O(1)
+     *
+     * @param grid
+     * @return
+     */
+    public int islandPerimeter(int[][] grid) {
+        int[] dx = new int[]{1, 0, -1, 0};
+        int[] dy = new int[]{0, 1, 0, -1};
+        int m = grid.length, n = grid[0].length, count = 0, x = 0, y = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 1) {
+                    count += 4;
+                    for (int k = 0; k < 4; k++) {
+                        x = i + dx[k];
+                        y = j + dy[k];
+                        if (x >= 0 && x < m && y >= 0 && y < n) {
+                            if (grid[x][y] == 1) count--;
+                        }
+                    }
+                }
+            }
+        }
+        return count;
     }
 }
