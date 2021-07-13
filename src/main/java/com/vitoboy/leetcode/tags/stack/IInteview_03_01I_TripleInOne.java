@@ -42,53 +42,47 @@ public class IInteview_03_01I_TripleInOne {
 }
 
 class TripleInOne {
+    int N = 3;
     int[] stack;
     int size;
-    int[] top;
+    int[] location;
 
     public TripleInOne(int stackSize) {
         size = stackSize;
-        stack = new int[size*3];
-        top = new int[3];
-        Arrays.fill(stack, -1);
+        stack = new int[size*N];
+        location = new int[N];
+        for (int i = 0; i < N; i++) {
+            location[i] = i*size;
+        }
     }
 
     public void push(int stackNum, int value) {
-        int begin = stackNum*size, end = (stackNum+1)*size;
-        for (int i = begin; i < end; i++) {
-            if (stack[i] < 0) {
-                stack[i] = value;
-                top[stackNum] = value;
-                break;
-            }
+        int idx = location[stackNum];
+        if (idx < (stackNum+1)*size) {
+            stack[idx] = value;
+            location[stackNum]++;
         }
     }
 
     public int pop(int stackNum) {
-        int begin = stackNum*size, end = (stackNum+1)*size;
-        for (int i = end-1; i >= begin; i--) {
-            if (stack[i] != -1) {
-                stack[i] =-1;
-                if (i > begin) {
-                    int out = top[stackNum];
-                    top[stackNum] = stack[i-1];
-                    return out;
-                } else {
-                    int out = top[stackNum];
-                    top[stackNum] = -1;
-                    return out;
-                }
-            }
+        int idx = location[stackNum];
+        if (idx > stackNum*size) {
+            location[stackNum]--;
+            return stack[idx];
         }
         return -1;
     }
 
     public int peek(int stackNum) {
-        return top[stackNum];
+        int idx = location[stackNum];
+        if (idx > stackNum*size) {
+            return stack[idx];
+        }
+        return -1;
     }
 
     public boolean isEmpty(int stackNum) {
-        return stack[stackNum*size] == 0;
+        return location[stackNum] == stackNum*size;
     }
 }
 
