@@ -69,7 +69,7 @@ public class I210710I_I981I_TimeMap {
  * 				执行耗时:156 ms,击败了94.31% 的Java用户
  * 				内存消耗:112.6 MB,击败了43.06% 的Java用户
  *
- * 使用类库, 使用类库的一些功能
+ * 使用类库, 使用类库的一些功能  Integer time = treeMap.floorKey(timestamp);
  */
 class TimeMap {
     Map<String, TreeMap<Integer, String>> mapMap;
