@@ -46,6 +46,9 @@ public class I210716I_Ipointoffer_53_I_I_Search {
      * 	时间复杂度: O(logN)
      * 	空间复杂度: O(1)
      *
+     * 	还可以优化==>考虑如果整个数组都是目标值, 而且数组长度很长时
+     * 	todo
+     *
      * @param nums
      * @param target
      * @return
