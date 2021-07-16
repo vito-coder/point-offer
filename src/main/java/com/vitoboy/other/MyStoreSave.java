@@ -1,5 +1,7 @@
 package com.vitoboy.other;
 
+import java.util.Arrays;
+
 /**
  *
  * 输入一个仓库数组 store, 其中 store[i]表示第i个仓库可以存放的商品的包数, 同时第i个仓库每包的商品数量为i个
@@ -44,17 +46,27 @@ public class MyStoreSave {
     public static void main(String[] args) {
         MyStoreSave save = new MyStoreSave();
         int[] store = new int[]{0,3,0,0,1,0};
-        System.out.println(save.saveProducts(store, 9));
+        System.out.println(save.saveProductsDp(store, 9));
         System.out.println("expect is : false");
         store = new int[]{0,8,3,0,5,7,2};
-        System.out.println(save.saveProducts(store, 20));
+        System.out.println(save.saveProductsDp(store, 20));
         System.out.println("expect is : true");
         store = new int[]{0,8,3,0,5,7,2};
-        System.out.println(save.saveProducts(store, 29));
+        System.out.println(save.saveProductsDp(store, 29));
+        System.out.println("expect is : true");
+        store = new int[]{0,0,2,1,0};
+        System.out.println(save.saveProductsDp(store, 4));
         System.out.println("expect is : true");
     }
 
 
+    /**
+     * 示例4得到的答案是错误的
+     *
+     * @param stores
+     * @param target
+     * @return
+     */
     public boolean saveProducts(int[] stores, int target) {
         int store = 0;
         for (int i = stores.length-1; i > 0 ; i--) {
@@ -70,5 +82,35 @@ public class MyStoreSave {
             }
         }
         return target == 0;
+    }
+
+
+    /**
+     * 动态规划解法
+     *
+     * @param stores
+     * @param target
+     * @return
+     */
+    public boolean saveProductsDp(int[] stores, int target) {
+        int n = stores.length;
+        int[][] dp = new int[n][target+1];
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(dp[i], -1);
+        }
+        dp[0][0] = 0;
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j <= target; j++) {
+                if (dp[i-1][j] != -1) dp[i][j] = 0;
+                else {
+                    if (j >= i && dp[i][j-i] != -1 && dp[i][j-i] < stores[i]) {
+                        dp[i][j] = dp[i][j-1] + 1;
+                    } else {
+                        dp[i][j] = -1;
+                    }
+                }
+            }
+        }
+        return dp[n-1][target] != -1;
     }
 }
