@@ -59,10 +59,10 @@ public class I45I_Jump_II {
      */
     public int jump(int[] nums) {
         int len = nums.length;
+        if (len == 1) return 0;
         int[] dp = new int[len];
         dp[0] = 0;
-        Arrays.fill(dp, 1, nums[0]+1, 1);
-        for (int i = 1; i < len; i++) {
+        for (int i = 0; i < len; i++) {
             for (int j = 1; j <= nums[i]; j++) {
                 int index = i+j;
                 if(index >= len-1) {
