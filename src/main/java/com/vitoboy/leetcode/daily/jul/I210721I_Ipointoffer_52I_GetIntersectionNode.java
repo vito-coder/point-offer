@@ -2,6 +2,9 @@ package com.vitoboy.leetcode.daily.jul;
 
 import com.vitoboy.leetcode.pointoffer.ListNode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 输入两个链表，找出它们的第一个公共节点。 
  * 
@@ -52,7 +55,7 @@ public class I210721I_Ipointoffer_52I_GetIntersectionNode {
         ListNode node = new ListNode(8, new ListNode(4, new ListNode(5)));
         ListNode root = new ListNode(4, new ListNode(1, node));
         ListNode root2 = new ListNode(5, new ListNode(0, new ListNode(1, node)));
-        ListNode res = intersectionNode.getIntersectionNode(root, root2);
+        ListNode res = intersectionNode.getIntersectionNodeIII(root, root2);
         while (res != null) {
             System.out.print(res.val + ",");
             res = res.next;
@@ -91,5 +94,62 @@ public class I210721I_Ipointoffer_52I_GetIntersectionNode {
             second = second.next;
         }
         return null;
+    }
+
+
+    /**
+     * 				解答成功:
+     * 				执行耗时:706 ms,击败了5.01% 的Java用户
+     * 				内存消耗:41.2 MB,击败了45.89% 的Java用户
+     *
+     * 时间复杂度: O(NM)
+     * 空间复杂度: O(1)
+     *
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public ListNode getIntersectionNodeII(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) return null;
+        ListNode first = headA, second = headB;
+        while (first != null) {
+            while (second != null) {
+                if (first == second) return first;
+                second = second.next;
+            }
+            second = headB;
+            first = first.next;
+        }
+        return null;
+    }
+
+
+    /**
+     * 参考评论题解
+     *
+     * 				解答成功:
+     * 				执行耗时:8 ms,击败了11.92% 的Java用户
+     * 				内存消耗:42.3 MB,击败了5.02% 的Java用户
+     *
+     * 时间复杂度: O(N+M)
+     * 空间复杂度: O(N)
+     *
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public ListNode getIntersectionNodeIII(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) return null;
+        ListNode first = headA;
+        Set<ListNode> set = new HashSet<>();
+        while (first != null) {
+            set.add(first);
+            first = first.next;
+        }
+        while (headB != null) {
+            if(set.contains(headB)) return headB;
+            headB = headB.next;
+        }
+        return headB;
     }
 }
