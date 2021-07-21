@@ -100,7 +100,19 @@ public class I918I_MaxSubarraySumCircular {
 
     /**
      * 考虑这种情况(相反思路)
-     * 设
+     * 最大子数组和只有两种情况
+     *  一. 非环的子数组
+     *  二. 环的子数组和
+     *      a.计算整个数组的数组和
+     *      b.计算区间内[0, n-2]最小的和
+     *      c.环的子数组的和的最大值, 即为sum(nums) - min(sub(nums))
+     *  三. 最大子数组和 = Max(最大非环子数组和, 最大环的子数组和)
+     *
+     * 作者：lizhihua2034
+     * 链接：https://leetcode-cn.com/problems/maximum-sum-circular-subarray/solution/java-dp-kan-bu-dong-wei-shi-yao-sum-min-x7q53/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
      *
      * 				解答成功:
      * 				执行耗时:6 ms,击败了44.66% 的Java用户
