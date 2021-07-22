@@ -1,6 +1,6 @@
 package com.vitoboy.leetcode.daily.jun;
 
-import com.vitoboy.leetcode.pointoffer.TreeNode;
+import com.vitoboy.leetcode.common.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Stack;

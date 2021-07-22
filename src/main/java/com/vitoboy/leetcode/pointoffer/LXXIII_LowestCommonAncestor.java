@@ -1,5 +1,7 @@
 package com.vitoboy.leetcode.pointoffer;
 
+import com.vitoboy.leetcode.common.TreeNode;
+
 /**
  * @Author: vito
  * @Date: 2020/7/27 09:54

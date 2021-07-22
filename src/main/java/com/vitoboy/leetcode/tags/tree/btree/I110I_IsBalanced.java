@@ -1,6 +1,6 @@
 package com.vitoboy.leetcode.tags.tree.btree;
 
-import com.vitoboy.leetcode.pointoffer.TreeNode;
+import com.vitoboy.leetcode.common.TreeNode;
 
 /**
  * 

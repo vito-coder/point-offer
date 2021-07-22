@@ -1,7 +1,5 @@
 package com.vitoboy.leetcode.daily.jun;
 
-import com.vitoboy.leetcode.Node;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,6 @@
-package com.vitoboy.leetcode;
+package com.vitoboy.leetcode.pointoffer;
+
+import com.vitoboy.leetcode.common.Node;
 
 /**
  * @Author: vito

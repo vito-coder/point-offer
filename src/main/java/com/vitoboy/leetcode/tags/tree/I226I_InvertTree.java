@@ -1,6 +1,6 @@
 package com.vitoboy.leetcode.tags.tree;
 
-import com.vitoboy.leetcode.pointoffer.TreeNode;
+import com.vitoboy.leetcode.common.TreeNode;
 
 import java.util.Arrays;
 

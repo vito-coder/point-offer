@@ -1,5 +1,7 @@
 package com.vitoboy.leetcode.pointoffer;
 
+import com.vitoboy.leetcode.common.TreeNode;
+
 import java.util.*;
 
 /**
