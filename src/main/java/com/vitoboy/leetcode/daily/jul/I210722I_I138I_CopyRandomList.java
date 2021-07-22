@@ -137,4 +137,22 @@ public class I210722I_I138I_CopyRandomList {
         }
         return root;
     }
+
+
+    /**
+     * 考虑一下如何优化空间复杂度(时间复杂度无法优化)
+     *
+     * todo
+     *
+     * 提示: 原链表: A->B->C->D
+     *      可以构建: A->A'->B->B'->C->C'->D->D'
+     *      再考虑随机节点可以怎么处理
+     *      最后考虑怎么将新链表输出: A'->B'->C'->D'
+     *
+     * @param head
+     * @return
+     */
+    public Node copyRandomListII(Node head) {
+        return null;
+    }
 }
