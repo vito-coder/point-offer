@@ -26,11 +26,39 @@ import com.vitoboy.leetcode.common.TreeNode;
  */
 public class I543I_DiameterOfBinaryTree {
     public static void main(String[] args) {
-        
+        I543I_DiameterOfBinaryTree tree = new I543I_DiameterOfBinaryTree();
+        TreeNode root = new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3));
+        System.out.println(tree.diameterOfBinaryTree(root));
+        System.out.println("expect is : 3");
+
     }
 
+    /**
+     *
+     * 这个算法不好, 太浪费空间与时间
+     *
+     * 				解答成功:
+     * 				执行耗时:17 ms,击败了8.38% 的Java用户
+     * 				内存消耗:38.2 MB,击败了76.11% 的Java用户
+     *
+     * 时间复杂度: O(?)
+     * 空间复杂度: O(?)
+     *
+     * @param root
+     * @return
+     */
     public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null || (root.left == null && root.right == null)) return 0;
+        int left = diameterOfBinaryTree(root.left);
+        int right = diameterOfBinaryTree(root.right);
+        int deep = 0;
+        if (root.left != null) deep += (deepOfTree(root.left) + 1);
+        if (root.right != null) deep += (deepOfTree(root.right)+1);
+        return Math.max(deep, Math.max(left, right));
+    }
 
-        return 0;
+    private int deepOfTree(TreeNode root) {
+        if (root == null ||(root.left == null && root.right == null)) return 0;
+        else return Math.max(deepOfTree(root.left), deepOfTree(root.right)) + 1;
     }
 }
