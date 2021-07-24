@@ -60,7 +60,7 @@ public class I210724I_I1736I_MaximumTime {
      * @param time
      * @return
      */
-    public String maximumTime(String time) {
+    public String maximumTimeI(String time) {
         String[] split = time.split(":");
         StringBuilder newTime = new StringBuilder();
         char c = ' ';
@@ -96,5 +96,53 @@ public class I210724I_I1736I_MaximumTime {
             newTime.append(split[1]);
         }
         return newTime.toString();
+    }
+
+    /**
+     *
+     * 				解答成功:
+     * 				执行耗时:0 ms,击败了100.00% 的Java用户
+     * 				内存消耗:36.8 MB,击败了21.14% 的Java用户
+     *
+     * 时间复杂度: O(N)
+     * 空间复杂度: O(N)
+     *
+     * @param time
+     * @return
+     */
+    public String maximumTime(String time) {
+        StringBuilder res = new StringBuilder();
+        char[] chars = time.toCharArray();
+        if (chars[0] == chars[1] && chars[0] == '?') {
+            res.append("23");
+        }else if (chars[0] == '?') {
+            if (chars[1] <= '3') {
+                res.append('2');
+            } else {
+                res.append('1');
+            }
+            res.append(chars[1]);
+        } else if (chars[1] == '?'){
+            res.append(chars[0]);
+            if (chars[0] == '2') {
+                res.append('3');
+            } else {
+                res.append('9');
+            }
+        } else {
+            res.append(chars[0]).append(chars[1]);
+        }
+        res.append(":");
+        if (chars[3] == '?' && chars[4] == '?') {
+            res.append("59");
+        } else if (chars[3] == '?') {
+            res.append('5').append(chars[4]);
+        } else if (chars[4] == '?') {
+            res.append(chars[3]).append('9');
+        } else {
+            res.append(chars[3]).append(chars[4]);
+        }
+
+        return res.toString();
     }
 }
