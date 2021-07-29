@@ -1,5 +1,7 @@
 package com.vitoboy.leetcode.daily.jul;
 
+import java.util.Arrays;
+
 /**
  * 元素的 频数 是该元素在一个数组中出现的次数。 
  * 
@@ -40,12 +42,33 @@ package com.vitoboy.leetcode.daily.jul;
  */
 public class I210719I_I1838I_MaxFrequency {
     public static void main(String[] args) {
-        
+        I210719I_I1838I_MaxFrequency frequency = new I210719I_I1838I_MaxFrequency();
+        int[] nums = new int[]{1,2,4};
+        System.out.println(frequency.maxFrequency(nums, 5));
+        System.out.println("expect is : 3");
+        nums = new int[]{1,4,8,13};
+        System.out.println(frequency.maxFrequency(nums, 5));
+        System.out.println("expect is : 2");
+        nums = new int[]{3,9,6};
+        System.out.println(frequency.maxFrequency(nums, 2));
+        System.out.println("expect is : 1");
+        nums = new int[]{9930,9923,9983,9997,9934,9952,9945,9914,9985,9982,9970,9932,9985,9902,9975,9990,9922,9990,9994,9937,9996,9964,9943,9963,9911,9925,9935,9945,9933,9916,9930,9938,10000,9916,9911,9959,9957,9907,9913,9916,9993,9930,9975,9924,9988,9923,9910,9925,9977,9981,9927,9930,9927,9925,9923,9904,9928,9928,9986,9903,9985,9954,9938,9911,9952,9974,9926,9920,9972,9983,9973,9917,9995,9973,9977,9947,9936,9975,9954,9932,9964,9972,9935,9946,9966};
+        System.out.println(frequency.maxFrequency(nums, 3056));
+        System.out.println("expect is : 73");
+        nums = new int[]{7,1,5,5};
+        System.out.println(frequency.maxFrequency(nums, 2));
+        System.out.println("expect is : 2");
     }
 
 
     /**
-     * todo
+     * 				解答成功:
+     * 				执行耗时:33 ms,击败了39.89% 的Java用户
+     * 				内存消耗:47.3 MB,击败了96.70% 的Java用户
+     *
+     * 时间复杂度: O(	nlogn + n)
+     * 空间复杂度: O(N)
+     *
      * @param nums
      * @param k
      * @return
@@ -53,11 +76,22 @@ public class I210719I_I1838I_MaxFrequency {
     public int maxFrequency(int[] nums, int k) {
         if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1) return 1;
+        Arrays.sort(nums);
+        int[] sum = new int[nums.length];
+        sum[0] = nums[0];
         for (int i = 1, len = nums.length; i < len; i++) {
-            nums[i] = nums[i-1] + nums[i];
+            sum[i] = sum[i-1] + nums[i];
         }
-        int count = 1;
-
-        return 0;
+        int flow = 0, fast = 1, len = nums.length, ans = 1;
+        while (fast < len && flow <= fast) {
+            int tmp = nums[fast]*(fast-flow+1) + sum[flow] - nums[flow] - sum[fast];
+            if (tmp <= k) {
+                ans = Math.max(ans, fast-flow+1);
+                fast++;
+            } else {
+                flow++;
+            }
+        }
+        return ans;
     }
 }
