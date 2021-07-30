@@ -34,32 +34,40 @@ public class I309I_MaxProfit_III {
 
     /**
      * 动态规划
-     * 定义 dp[n][3]{买入, 卖出, 冷冻} 表示三种状态下的收益情况
-     * dp[n][0] = max(dp[n-1]
+     * dp[][3]{买入, 卖出, 冻结}状态收益
      * [1,2,3,0,2]
-     * 第一天: (-1,1,0)
-     * 第二天: (-1,(2-1)=1,1)
-     * 第三天: (-2,(3-1)=2,1)
-     * 第四天: (dp[i-1][2]-p[i]=1, p[i]+dp[i-1][0]=-2, dp[i-1][1]=2)
-     * 第五天: (dp[i-1][2]-p[i]=0, dp[i-1][0]-p[i]=-1, dp[i-1][1]=-2)
+     * dp[0][3] = {-1,0,0}
+     * dp[1][3] = {-1,2-1=1,0}
+     * dp[2][3] = {-1,3-1=2,1}
+     * dp[3][3] = {1,2,2}
+     * dp[4][3] = {1,1+2=3,2}
+     *
+     * 买入 = max(冻结-当前收益, 上次的买入收益)
+     * 卖出 = max(当前收益+上次的买入收益, 上次的卖出收益)
+     * 冻结 = max(冻结, 上次的卖出收益)
+     *
+     * 				解答成功:
+     * 				执行耗时:2 ms,击败了19.52% 的Java用户
+     * 				内存消耗:37.8 MB,击败了37.44% 的Java用户
+     *
+     * 时间复杂度: O(N)
+     * 空间复杂度: O(N)
      *
      *
      * @param prices
      * @return
      */
     public int maxProfit(int[] prices) {
-        int len = prices.length;
+        int max = 0, len = prices.length;
         int[][] dp = new int[len][3];
-        dp[0][0] = -prices[0]; dp[0][1] = prices[0]; dp[0][2] = 0;
-        int ans = Math.max(dp[0][0], Math.max(dp[0][1], dp[0][2]));
+        dp[0][0] = -prices[0];
+        dp[0][1] = dp[0][2] = 0;
         for (int i = 1; i < len; i++) {
-            // 买入 ==> 上次是冻结的, 才能买入
-            dp[i][0] = dp[i-1][2] - prices[i];
-            // 卖出 ==> 上次买入的, 可以卖; 上次冻结, 也可以卖
-            dp[i][1] = Math.max(dp[i-1][0] + prices[i], dp[i-1][2] - prices[i]);
+            dp[i][0] = Math.max(dp[i-1][2] - prices[i], dp[i-1][0]);
+            dp[i][1] = Math.max(prices[i] + dp[i-1][0], dp[i-1][1]);
             dp[i][2] = Math.max(dp[i-1][2], dp[i-1][1]);
-            ans = Math.max(dp[0][0], Math.max(dp[0][1], dp[0][2]));
+            max = Math.max(max, Math.max(dp[i][0], Math.max(dp[i][1],dp[i][2])));
         }
-        return ans;
+        return max;
     }
 }

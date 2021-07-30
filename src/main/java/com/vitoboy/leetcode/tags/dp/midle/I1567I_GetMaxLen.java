@@ -66,6 +66,9 @@ public class I1567I_GetMaxLen {
         nums = new int[]{1,2,3,5,-6,4,0,10};
         System.out.println(maxLen.getMaxLen(nums));
         System.out.println("expect is : 4");
+        nums = new int[]{-16,0,-5,2,2,-13,11,8};
+        System.out.println(maxLen.getMaxLen(nums));
+        System.out.println("expect is : 6");
     }
 
     /**
@@ -73,14 +76,58 @@ public class I1567I_GetMaxLen {
      * nums = [1,2,3,5,-6,4,0,10]
      * ==>
      * nums = [1,1,1,1,-1,1,0,1]
+     * dp[0][0] = 1
+     * dp[0][1] = 0
      *
-     * todo
+     * dp[1][0] = 2
+     * dp[1][1] = 0
+     *
+     * dp[2][0] = 3
+     * dp[2][1] = 0
+     *
+     * dp[3][0] = 4
+     * dp[3][1] = 0
+     *
+     * dp[4][0] = 0
+     * dp[4][1] = 5
+     *
+     * dp[5][0] = 1
+     * dp[5][1] = 5
+     *
+     * dp[6][0] = 0
+     * dp[6][1] = 0
+     *
+     * dp[7][0] = 1
+     * dp[7][1] = 0
+     *
+     * 				解答成功:
+     * 				执行耗时:17 ms,击败了6.68% 的Java用户
+     * 				内存消耗:53.7 MB,击败了98.43% 的Java用户
+     *
+     * 时间复杂度: O(N)
+     * 空间复杂度: O(N)
      *
      * @param nums
      * @return
      */
     public int getMaxLen(int[] nums) {
-        return 0;
+        int[][] dp = new int[nums.length][2];
+        dp[0][0] = nums[0] > 0 ? 1 : 0;
+        dp[0][1] = nums[0] < 0 ? 1 : 0;
+        int max = dp[0][0];
+        for (int i = 1, len = nums.length; i < len; i++) {
+            if (nums[i] > 0) {
+                dp[i][0] = 1 + dp[i-1][0];
+                dp[i][1] = dp[i-1][1] > 0 ? dp[i-1][1] + 1: 0;
+            } else if (nums[i] < 0) {
+                dp[i][0] = dp[i-1][1] > 0 ? dp[i-1][1]+1 : 0;
+                dp[i][1] = 1 + dp[i-1][0];
+            } else {
+                dp[i][0] = dp[i][1] = 0;
+            }
+            max = Math.max(max, dp[i][0]);
+        }
+        return max;
     }
     
 }
